@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    ports: 
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: 'issue_tracker'
+      MYSQL_USER: 'admin'
+      MYSQL_PASSWORD: 'admin'
+      MYSQL_ROOT_PASSWORD: 'admin'
+
+    volumes:
+      - issue_tracker_data:/bitnami/mysql
+
+volumes:
+  issue_tracker_data:
