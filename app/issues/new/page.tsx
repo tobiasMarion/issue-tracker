@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { creasteIsuseScrema } from '@/app/validationSchemas'
 import { z } from 'zod'
 import { ErrorMessage } from '../../components/ErrorMessage'
+import { Spinner } from '../../components/Spinner'
 
 type IssueForm = z.infer<typeof creasteIsuseScrema>
 
@@ -20,6 +21,7 @@ export default function NewIssue() {
     resolver: zodResolver(creasteIsuseScrema)
   })
   const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   return (
     <div className='max-w-xl'>
@@ -30,10 +32,12 @@ export default function NewIssue() {
         className='space-y-3'
         onSubmit={handleSubmit(async (data) => {
           try {
+            setIsSubmitting(true)
             await axios.post('/api/issues', data)
             router.push('/issues')
           } catch (error) {
             setError('An unexpected error has occurred')
+            setIsSubmitting(false)
           }
         })}>
         <TextField.Root>
@@ -48,7 +52,7 @@ export default function NewIssue() {
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
 
-        <Button>Submit New Issue</Button>
+        <Button disabled={isSubmitting}>Submit New Issue {isSubmitting && <Spinner />}</Button>
       </form >
     </div>
   )
