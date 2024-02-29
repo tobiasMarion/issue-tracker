@@ -1,7 +1,7 @@
-import { Table, TableRow } from "@radix-ui/themes";
+import { Table, TableRow } from "@radix-ui/themes"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import { IssueActions } from "./IssueActions";
+import { IssueActions } from "./IssueActions"
 
 
 export default async function IssuesPage() {
