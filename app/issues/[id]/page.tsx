@@ -17,6 +17,8 @@ export default async function IssueDetailPage({ params }: Props) {
     notFound()
   }
 
+  // await new Promise(resolve => setTimeout(resolve, 2000))
+
   return (
     <div>
       <Heading>{issue.title}</Heading>

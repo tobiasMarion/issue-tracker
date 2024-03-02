@@ -15,7 +15,9 @@ import { Spinner } from '../../components/Spinner'
 
 type IssueForm = z.infer<typeof creasteIsuseScrema>
 
-export default function NewIssue() {
+export default async function NewIssue() {
+  // await new Promise(resolve => setTimeout(resolve, 2000))
+
   const router = useRouter()
   const { register, control, handleSubmit, formState: { errors } } = useForm<IssueForm>({
     resolver: zodResolver(creasteIsuseScrema)
