@@ -1,7 +1,7 @@
-import { Button } from '@radix-ui/themes'
+import { IssueActions } from '@/app/components'
 
 export default function Home() {
   return (
-    <div><Button>New Issue (Home)</Button></div>
+    <div><IssueActions /></div>
   )
 }
