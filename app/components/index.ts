@@ -1,10 +1,9 @@
-export { Link } from './Link'
-export { IssueStatusBadge } from './IssueStatusBadge'
 export { ErrorMessage } from './ErrorMessage'
-export { Spinner } from './Spinner'
 export { IssueActions } from './IssueActions'
+export { IssueStatusBadge } from './IssueStatusBadge'
+export { Link } from './Link'
+export { NavBar } from './NavBar'
 export { Skeleton } from './Skeleton'
-
-
-
-
+export { Spinner } from './Spinner'
+export { IssueDetails } from './IssueDetails'
+export { EditIssueButton } from './EditIssueButton'
