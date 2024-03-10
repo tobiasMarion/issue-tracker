@@ -1,4 +1,5 @@
-import { EditIssueButton, IssueDetails } from '@/app/components'
+import { IssueDetails } from '@/app/components'
+import { EditIssueButton } from '@/app/issues/_components'
 import prisma from '@/prisma/client'
 import { Box, Grid } from '@radix-ui/themes'
 import { notFound } from 'next/navigation'
@@ -15,8 +16,6 @@ export default async function IssueDetailPage({ params }: Props) {
   if (!issue) {
     notFound()
   }
-
-  // await new Promise(resolve => setTimeout(resolve, 2000))
 
   return (
     <Grid columns={{ initial: '1', md: '2' }} gap="5">
