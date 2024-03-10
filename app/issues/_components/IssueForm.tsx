@@ -33,18 +33,13 @@ export async function IssueForm({ issue }: Props) {
   const onSubmit = handleSubmit(async (data) => {
     try {
       setIsSubmitting(true)
-      let issueRoute
       if (issue) {
-        console.log(`/api/issues/${issue.id}`, data)
         await axios.patch(`/api/issues/${issue.id}`, data)
-        issueRoute = issue.id
       } else {
-        const newIssue: Issue = (await axios.post('/api/issues', data)).data
-        issueRoute = newIssue.id
+        await axios.post('/api/issues', data)
       }
-
-      router.push(`/issues/${issueRoute}`)
-
+      router.push('/issues/')
+      router.refresh()
 
     } catch (error) {
       setError('An unexpected error has occurred')

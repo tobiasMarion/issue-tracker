@@ -7,8 +7,6 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
   const body = await request.json()
   const validation = issueSchema.safeParse(body)
 
-  console.log(validation)
-
   if (!validation.success) {
     return NextResponse.json(validation.error.format(), { status: 400 })
   }
