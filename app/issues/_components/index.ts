@@ -1,4 +1,5 @@
 import { EditIssueButton } from './EditIssueButton'
-import { IssueForm } from './IssueForm'
+import { IssueFormSkeleton } from './IssueFormSkeleton'
+import IssueForm from './IssueForm'
 
-export { EditIssueButton, IssueForm }
+export { EditIssueButton, IssueForm, IssueFormSkeleton }
