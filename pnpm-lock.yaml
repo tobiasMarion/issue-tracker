@@ -20,6 +20,9 @@ dependencies:
   '@radix-ui/themes':
     specifier: ^2.0.3
     version: 2.0.3(@types/react-dom@18.2.19)(@types/react@18.2.58)(react-dom@18.2.0)(react@18.2.0)
+  '@tanstack/react-query':
+    specifier: ^5.27.5
+    version: 5.27.5(react@18.2.0)
   '@types/node':
     specifier: 20.11.20
     version: 20.11.20
@@ -1533,6 +1536,19 @@ packages:
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.4.1
     dev: true
+
+  /@tanstack/query-core@5.27.5:
+    resolution: {integrity: sha512-HuYOo46NhzNX1SwXCmLf/Skr8B7T56cDHUN+iOhnu7+GOkUMThda64GwZpAqQzBT8TOTBQo6RQaNe0gi3Gi2fw==}
+    dev: false
+
+  /@tanstack/react-query@5.27.5(react@18.2.0):
+    resolution: {integrity: sha512-VcuQo4CYRGsPsD8/rj9e4WnXN6eU4GKmAs0Yd9a1hLSx6DxAzRaBdrwu6P9lfjpz8bxaYkZRyb5NI+YtLipoYA==}
+    peerDependencies:
+      react: ^18.0.0
+    dependencies:
+      '@tanstack/query-core': 5.27.5
+      react: 18.2.0
+    dev: false
 
   /@types/codemirror@5.60.15:
     resolution: {integrity: sha512-dTOvwEQ+ouKJ/rE9LT1Ue2hmP6H1mZv5+CCnNWu2qtiOe2LQa9lCprEY20HxiDmV/Bxh+dXjywmy5aKvoGjULA==}
