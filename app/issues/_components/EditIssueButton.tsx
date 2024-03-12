@@ -5,8 +5,10 @@ import Link from 'next/link';
 export function EditIssueButton({ issueId }: { issueId: number }) {
   return (
     <Button>
-      <Pencil2Icon />
-      <Link href={`/issues/${issueId}/edit`}>Edit Issue</Link>
+      <Link href={`/issues/${issueId}/edit`} className='flex gap-2 items-center w-full justify-center'>
+        <Pencil2Icon />
+        Edit Issue
+      </Link>
     </Button>
   )
 }
