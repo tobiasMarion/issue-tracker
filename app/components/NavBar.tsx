@@ -52,22 +52,26 @@ function NavLinks() {
 function AuthStatus() {
   const { status, data: session } = useSession()
 
-  if (status === "loading") return <Skeleton width="5rem"/>
+  if (status === "loading") return <Skeleton width="5rem" />
   if (status === "unauthenticated") {
     return <Link className="nav-link" href="/api/auth/signin">Log in</Link>
   }
 
+  console.log(session)
   return (
     <Box>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger>
-          <Avatar
-            src={session!.user!.image!}
-            fallback="?"
-            size="2" radius="full"
-            className="cursor-pointer"
-            referrerPolicy="no-referrer"
-          />
+          <Flex gap="2" align="center" className="cursor-pointer">
+            <Text size="2" className="nav-link">{session!.user!.name}</Text>
+            <Avatar
+              src={session!.user!.image!}
+              fallback="?"
+              size="2" radius="full"
+              referrerPolicy="no-referrer"
+            />
+          </Flex>
+
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Label>
