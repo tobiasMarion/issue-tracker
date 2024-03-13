@@ -8,15 +8,15 @@ datasource db {
 }
 
 model Issue {
-  id               Int      @id @default(autoincrement())
-  title            String   @db.VarChar(255)
-  description      String   @db.Text
-  status           Status   @default(OPEN)
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  assignedToUserId String?  @db.VarChar(255)
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(255)
+  description String   @db.Text
+  status      Status   @default(OPEN)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-  assignedToUser User? @relation(fields: [assignedToUserId], references: [id])
+  assignedToUser   User?   @relation(fields: [assignedToUserId], references: [id])
+  assignedToUserId String? @db.VarChar(255)
 }
 
 enum Status {
