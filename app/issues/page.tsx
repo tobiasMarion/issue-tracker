@@ -1,14 +1,19 @@
 import { IssueStatusBadge, Link } from '@/app/components';
+import NextLink from 'next/link'
 import prisma from '@/prisma/client';
 import { Table } from '@radix-ui/themes';
 import { IssueActions } from './_components/IssueActions';
-import { Status } from '@prisma/client';
+import { Issue, Status } from '@prisma/client';
+import { ArrowUpIcon } from '@radix-ui/react-icons';
 
 export const dynamic = 'force-dynamic'      // Data cache (○ -> λ)
 // export const dynamic = 0                 // Full route cache (time to revalidate data [0 === 'force-dynamic'])
 
 interface Props {
-  searchParams: { status: Status }
+  searchParams: {
+    status: Status,
+    orderBy: keyof Issue
+  }
 }
 
 
@@ -22,6 +27,16 @@ export default async function IssuesPage({ searchParams }: Props) {
     where: { status }
   })
 
+  const columns: {
+    label: string,
+    value: keyof Issue
+    className?: string
+  }[] = [
+      { label: 'Issue', value: 'title' },
+      { label: 'Status', value: 'status', className: 'hidden md:table-cell' },
+      { label: 'Created', value: 'createdAt', className: 'hidden md:table-cell' },
+    ]
+
   return (
     <div>
       <IssueActions />
@@ -29,9 +44,15 @@ export default async function IssuesPage({ searchParams }: Props) {
       <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
-            <Table.ColumnHeaderCell>Issue</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="hidden md:table-cell">Status</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="hidden md:table-cell">Created</Table.ColumnHeaderCell>
+            {columns.map(column => (
+              <Table.ColumnHeaderCell key={column.value}>
+                <NextLink
+                  href={{ query: { ...searchParams, orderBy: column.value } }}>
+                  {column.label}
+                </NextLink>
+                {column.value === searchParams.orderBy && <ArrowUpIcon className='inline'/>}
+              </Table.ColumnHeaderCell>
+            ))}
           </Table.Row>
         </Table.Header>
         <Table.Body>
