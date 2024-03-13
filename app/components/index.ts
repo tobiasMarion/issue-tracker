@@ -1,5 +1,4 @@
 export { ErrorMessage } from './ErrorMessage'
-export { IssueActions } from './IssueActions'
 export { IssueStatusBadge } from './IssueStatusBadge'
 export { Link } from './Link'
 export { NavBar } from './NavBar'

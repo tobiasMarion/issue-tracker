@@ -2,7 +2,7 @@ import { Flex, Box, Card } from '@radix-ui/themes'
 import { Skeleton } from '@/app/components'
 
 
-export default async function LoadingIssueDetailPage() {
+export default function LoadingIssueDetailPage() {
 
   return (
     <Box>

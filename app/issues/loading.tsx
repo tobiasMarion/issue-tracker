@@ -1,8 +1,9 @@
 import { Table } from '@radix-ui/themes'
-import { IssueActions, Skeleton } from '@/app/components'
+import { Skeleton } from '@/app/components'
+import { IssueActions } from './_components/IssueActions'
 
 
-export default async function IssuesPage() {
+export default function IssuesPage() {
   const issues = [1, 2, 3, 4, 5]
 
   return (

@@ -1,6 +1,7 @@
+import { IssueStatusBadge, Link } from '@/app/components';
 import prisma from '@/prisma/client';
 import { Table } from '@radix-ui/themes';
-import { IssueStatusBadge, Link, IssueActions } from '@/app/components'
+import { IssueActions } from './_components/IssueActions';
 
 export const dynamic = 'force-dynamic'      // Data cache (○ -> λ)
 // export const dynamic = 0                 // Full route cache (time to revalidate data [0 === 'force-dynamic'])
