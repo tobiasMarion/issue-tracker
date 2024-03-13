@@ -4,8 +4,8 @@ import { Skeleton } from "@/app/components/";
 import { Issue, User } from "@prisma/client";
 import { Select } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
-import toast, { Toaster } from 'react-hot-toast'
 import axios from "axios";
+import toast, { Toaster } from 'react-hot-toast';
 
 export function AsigneeSelect({ issue }: { issue: Issue }) {
   const { data: users, error, isLoading } = useQuery<User[]>({
@@ -46,6 +46,5 @@ export function AsigneeSelect({ issue }: { issue: Issue }) {
 
       <Toaster />
     </>
-
   )
 }
