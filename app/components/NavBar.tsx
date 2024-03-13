@@ -57,7 +57,6 @@ function AuthStatus() {
     return <Link className="nav-link" href="/api/auth/signin">Log in</Link>
   }
 
-  console.log(session)
   return (
     <Box>
       <DropdownMenu.Root>
