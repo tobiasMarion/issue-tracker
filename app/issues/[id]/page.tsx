@@ -7,6 +7,8 @@ import { getServerSession } from 'next-auth'
 import { notFound } from 'next/navigation'
 import { z } from 'zod'
 
+export const dynamic = 'force-dynamic'  
+
 interface Props {
   params: { id: string }
 }
