@@ -67,7 +67,7 @@ export default function IssueForm({ issue }: Props) {
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
 
         <Button disabled={isSubmitting}>
-          { issue ? 'Update Issue' : 'Submit New Issue' }{' '}
+          {issue ? 'Update Issue' : 'Submit New Issue'}{' '}
           {isSubmitting && <Spinner />}
         </Button>
       </form >
