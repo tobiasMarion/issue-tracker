@@ -1,10 +1,11 @@
 import { IssueStatusBadge, Link } from '@/app/components';
-import NextLink from 'next/link'
 import prisma from '@/prisma/client';
-import { Table } from '@radix-ui/themes';
-import { IssueActions } from './_components/IssueActions';
 import { Issue, Status } from '@prisma/client';
 import { ArrowUpIcon } from '@radix-ui/react-icons';
+import { Table } from '@radix-ui/themes';
+import { revalidatePath } from 'next/cache';
+import NextLink from 'next/link';
+import { IssueActions } from './_components/IssueActions';
 
 export const dynamic = 'force-dynamic'      // Data cache (○ -> λ)
 // export const dynamic = 0                 // Full route cache (time to revalidate data [0 === 'force-dynamic'])
@@ -52,7 +53,7 @@ export default async function IssuesPage({ searchParams }: Props) {
         <Table.Header>
           <Table.Row>
             {columns.map(column => (
-              <Table.ColumnHeaderCell key={column.value}>
+              <Table.ColumnHeaderCell key={column.value} className={column.className}>
                 <NextLink
                   href={{ query: { ...searchParams, orderBy: column.value } }}>
                   {column.label}

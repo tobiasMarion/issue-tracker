@@ -4,10 +4,11 @@ import { DeleteIssueButton, EditIssueButton, AsigneeSelect } from '@/app/issues/
 import prisma from '@/prisma/client'
 import { Box, Flex, Grid } from '@radix-ui/themes'
 import { getServerSession } from 'next-auth'
+import { revalidatePath } from 'next/cache'
 import { notFound } from 'next/navigation'
 import { z } from 'zod'
 
-export const dynamic = 'force-dynamic'  
+export const dynamic = 'force-dynamic'
 
 interface Props {
   params: { id: string }
