@@ -1,4 +1,5 @@
 export { ErrorMessage } from './ErrorMessage'
+export { IssueChart } from './IssueChart'
 export { IssueDetails } from './IssueDetails'
 export { IssueStatusBadge } from './IssueStatusBadge'
 export { IssueSummary } from './IssueSummary'
