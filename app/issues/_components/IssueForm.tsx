@@ -19,7 +19,7 @@ interface Props {
   issue?: Issue
 }
 
-export function IssueForm({ issue }: Props) {
+export default function IssueForm({ issue }: Props) {
   const router = useRouter()
   const { register, control, handleSubmit, formState: { errors } } = useForm<IssueFormData>({
     resolver: zodResolver(issueSchema)
