@@ -5,9 +5,15 @@ import { Flex } from '@radix-ui/themes';
 import { IssueTable } from './_components';
 import { IssueActions } from './_components/IssueActions';
 import { IssueQuery, columnNames } from './_components/IssueTable';
+import { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic'      // Data cache (○ -> λ)
 // export const dynamic = 0                 // Full route cache (time to revalidate data [0 === 'force-dynamic'])
+
+export const metadata: Metadata = {
+  title: 'Issue Tracker | Issues List',
+  description: 'View all project Issues'
+}
 
 interface Props {
   searchParams: IssueQuery

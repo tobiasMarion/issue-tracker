@@ -24,7 +24,7 @@ export function IssueSummary({ open, inProgress, closed }: Props) {
   return (
     <Flex gap="4">
       {statusCard.map(status => (
-        <Link href={`/issues?status=${status.status}`} key={status.status}>
+        <Link className="flex-1" href={`/issues?status=${status.status}`} key={status.status}>
           <Card>
             <Flex direction="column" gap="1">
               <Text className="text-sm font-light">{status.label}</Text>
