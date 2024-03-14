@@ -1,14 +1,18 @@
 import authOptions from '@/app/auth/authOptions'
 import { IssueDetails } from '@/app/components'
-import { DeleteIssueButton, EditIssueButton, AsigneeSelect } from '@/app/issues/_components'
+import { AsigneeSelect, DeleteIssueButton, EditIssueButton } from '@/app/issues/_components'
 import prisma from '@/prisma/client'
 import { Box, Flex, Grid } from '@radix-ui/themes'
 import { getServerSession } from 'next-auth'
-import { revalidatePath } from 'next/cache'
 import { notFound } from 'next/navigation'
+import { cache } from 'react'
 import { z } from 'zod'
 
 export const dynamic = 'force-dynamic'
+
+const fetchIssue = cache((issueId: number) => (
+  prisma.issue.findUnique({ where: { id: issueId } })
+))
 
 interface Props {
   params: { id: string }
@@ -21,9 +25,7 @@ export default async function IssueDetailPage({ params }: Props) {
 
   if (!validation.success) notFound()
 
-  const issue = await prisma.issue.findUnique({
-    where: { id: validation.data }
-  })
+  const issue = await fetchIssue(parseInt(params.id))
 
   if (!issue) notFound()
 
@@ -44,7 +46,7 @@ export default async function IssueDetailPage({ params }: Props) {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const issue = await prisma.issue.findUnique({ where: { id: parseInt(params.id) } })
+  const issue = await fetchIssue(parseInt(params.id))
 
   return {
     title: issue?.title,
