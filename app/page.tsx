@@ -1,4 +1,4 @@
-import { Text } from "@radix-ui/themes";
+import { LatestIssues } from "./components/"
 
 interface Props {
   searchParams: {
@@ -8,6 +8,6 @@ interface Props {
 
 export default function Home({ searchParams }: Props) {
   return (
-    <Text>Hello, World!</Text>
+    <LatestIssues />
   )
 }

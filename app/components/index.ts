@@ -6,4 +6,5 @@ export { NavBar } from './NavBar'
 export { Pagination } from './Pagination'
 export { Skeleton } from './Skeleton'
 export { Spinner } from './Spinner'
+export { LatestIssues } from './LatestIssues'
 
