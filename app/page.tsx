@@ -3,6 +3,8 @@ import { IssueChart, IssueSummary, LatestIssues } from "./components/"
 import { Flex, Grid } from "@radix-ui/themes"
 import { Metadata } from "next"
 
+export const dynamic = 'force-dynamic'      // Data cache (○ -> λ)
+
 export const metadata: Metadata = {
   title: 'Issue Tracker | Dashboard',
   description: 'View a summary of project issues'
