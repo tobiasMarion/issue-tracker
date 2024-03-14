@@ -1,4 +1,4 @@
-import { Pagination } from "./components/";
+import { Text } from "@radix-ui/themes";
 
 interface Props {
   searchParams: {
@@ -8,6 +8,6 @@ interface Props {
 
 export default function Home({ searchParams }: Props) {
   return (
-    <Pagination itemCount={100} pageSize={10} currentPage={parseInt(searchParams.page)} />
+    <Text>Hello, World!</Text>
   )
 }
