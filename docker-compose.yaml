@@ -1,18 +1,16 @@
 version: '3.3'
 
 services:
-  mysql:
-    image: mysql:5.7
-    ports: 
-      - '3306:3306'
+  postgres:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
     environment:
-      MYSQL_DATABASE: 'issue_tracker'
-      MYSQL_USER: 'admin'
-      MYSQL_PASSWORD: 'admin'
-      MYSQL_ROOT_PASSWORD: 'admin'
-
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=issue-tracker
     volumes:
-      - issue_tracker_data:/bitnami/mysql
+      - issue_tracker_data:/bitnami/postgresql
 
 volumes:
   issue_tracker_data:

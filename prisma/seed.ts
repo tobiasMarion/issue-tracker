@@ -4,7 +4,7 @@ const prisma = new PrismaClient
 
 async function seed() {
   const query = Prisma.sql`INSERT INTO
-    Issue (title, description, status, createdAt, updatedAt)
+    "Issue" (title, description, status, "createdAt", "updatedAt")
     VALUES
       (
         'Website Login Issue',
