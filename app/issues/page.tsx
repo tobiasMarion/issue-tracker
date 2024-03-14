@@ -1,4 +1,4 @@
-import { IssueStatusBadge, Link } from '@/app/components';
+import { IssueStatusBadge, Link, Pagination } from '@/app/components';
 import prisma from '@/prisma/client';
 import { Issue, Status } from '@prisma/client';
 import { ArrowUpIcon } from '@radix-ui/react-icons';
@@ -12,8 +12,9 @@ export const dynamic = 'force-dynamic'      // Data cache (○ -> λ)
 
 interface Props {
   searchParams: {
-    status: Status,
+    status: Status
     orderBy: keyof Issue
+    page: string
   }
 }
 
@@ -34,16 +35,25 @@ export default async function IssuesPage({ searchParams }: Props) {
     ? searchParams.status
     : undefined
 
+  const where = { status }
+
   const orderBy = columns
     .map(column => column.value)
     .includes(searchParams.orderBy)
     ? { [searchParams.orderBy]: 'asc' }
     : undefined
 
+  const page = parseInt(searchParams.page) || 1
+  const pageSize = 10
+
   const issues = await prisma.issue.findMany({
-    where: { status },
-    orderBy
+    where,
+    orderBy,
+    skip: (page - 1) * pageSize,
+    take: pageSize
   })
+
+  const issueCount = await prisma.issue.count({ where })
 
   return (
     <div>
@@ -76,7 +86,8 @@ export default async function IssuesPage({ searchParams }: Props) {
           ))}
         </Table.Body>
       </Table.Root>
-    </div>
 
+      <Pagination pageSize={pageSize} currentPage={page} itemCount={issueCount}/>
+    </div>
   )
 }
