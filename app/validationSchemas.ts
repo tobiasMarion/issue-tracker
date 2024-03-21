@@ -21,5 +21,8 @@ export const patchIssueSchema = z.object({
     .min(1, "AssignToUserId is required")
     .max(255)
     .optional()
-    .nullable()
+    .nullable(),
+  status: z
+    .enum(['OPEN', 'CLOSED', 'IN_PROGRESS'])
+    .optional()
 })

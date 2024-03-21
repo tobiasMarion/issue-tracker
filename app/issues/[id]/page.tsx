@@ -1,8 +1,8 @@
 import authOptions from '@/app/auth/authOptions'
 import { IssueDetails } from '@/app/components'
-import { AsigneeSelect, DeleteIssueButton, EditIssueButton } from '@/app/issues/_components'
+import { AsigneeSelect, DeleteIssueButton, EditIssueButton, StatusSelect } from '@/app/issues/_components'
 import prisma from '@/prisma/client'
-import { Box, Flex, Grid } from '@radix-ui/themes'
+import { Box, Flex, Grid, Text } from '@radix-ui/themes'
 import { getServerSession } from 'next-auth'
 import { notFound } from 'next/navigation'
 import { cache } from 'react'
@@ -34,11 +34,20 @@ export default async function IssueDetailPage({ params }: Props) {
       <Box className="md:col-span-4">
         <IssueDetails issue={issue} />
       </Box>
-      {session && <Box>
+      {(session && issue.status !== 'CLOSED') && <Box>
         <Flex direction="column" gap="4">
-          <AsigneeSelect issue={issue} />
-          <EditIssueButton issueId={issue.id} />
-          <DeleteIssueButton issueId={issue.id} />
+          <Flex direction="column" gap="1">
+            <Text>Current Status</Text>
+            <StatusSelect issue={issue}/>
+          </Flex>
+          <Flex direction="column" gap="1">
+            <Text>Assigned to</Text>
+            <AsigneeSelect issue={issue} />
+          </Flex>
+          <Flex direction="column" gap="1">
+            <EditIssueButton issueId={issue.id} />
+            <DeleteIssueButton issueId={issue.id} />
+          </Flex>
         </Flex>
       </Box>}
     </Grid>
